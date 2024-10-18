@@ -1,30 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom'; // Import Navigate
 import Navbar from './Component/Navbar';
-import Home from './Component/Home'; // Assuming Home is in the same directory
-import Login from './Component/User/Login'; // Login component from the user folder
-import Register from './Component/User/Register'; // Register component from the user folder
-// import Shop from './Shop'; // Assuming Shop is in the same directory
-// import About from './About'; // Assuming About is in the same directory
-// import Contact from './Contact'; // Assuming Contact is in the same directory
+import Home from './Component/Home';
+// import Shop from './Pages/Shop';
+// import About from './Pages/About';
+// import Contact from './Pages/Contact';
+import Login from './Component/User/Login';
+import Register from './Component/User/Register';
 
 function App() {
+  const location = useLocation();  // Get the current route
+
+  // Determine if the current route is either "/login" or "/register"
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
   return (
-    <Router>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/home" element={<Home />} />
-          {/* <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      {!isAuthPage && <Navbar />} {/* Only show Navbar if not on login/register */}
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/home" element={<Home />} />
+        {/* <Route path="/shop" element={<Shop />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </div>
   );
 }
 
-export default App;
+// Wrap the App component with Router
+const Root = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default Root;

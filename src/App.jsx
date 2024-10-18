@@ -1,23 +1,28 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Component/Navbar';
-
-const Home = () => <h2></h2>;
-const Shop = () => <h2>Shop Indoor Plants</h2>;
-const About = () => <h2>About Us</h2>;
-const Contact = () => <h2>Contact Us</h2>;
+import Home from './Component/Home'; // Assuming Home is in the same directory
+import Login from './Component/User/Login'; // Login component from the user folder
+import Register from './Component/User/Register'; // Register component from the user folder
+// import Shop from './Shop'; // Assuming Shop is in the same directory
+// import About from './About'; // Assuming About is in the same directory
+// import Contact from './Contact'; // Assuming Contact is in the same directory
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/home" element={<Home />} />
+          {/* <Route path="/shop" element={<Shop />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

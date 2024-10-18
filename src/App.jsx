@@ -6,6 +6,7 @@ import Login from './Component/User/Login';
 import Register from './Component/User/Register';
 import Shop from './Component/Shop'; // Make sure to import the Shop component
 import PlantDetail from './Component/PlantDetail'; // Import the PlantDetail component
+import Contact from './Component/Contact'; // Import the Contact component
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,9 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/home" element={isAuthenticated() ? <Home /> : <Navigate to="/login" />} />
         <Route path="/shop" element={isAuthenticated() ? <Shop /> : <Navigate to="/login" />} />
+        <Route path="/contact" element={isAuthenticated() ? <Contact /> : <Navigate to="/login" />} />
+
+        <Route path="/contact" element={<Contact />} /> {/* Add route for Contact */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/plants/:id" element={isAuthenticated() ? <PlantDetail /> : <Navigate to="/login" />} /> {/* Update this route */}
@@ -38,4 +42,4 @@ const Root = () => (
   </Router>
 );
 
-export default Root;
+export default Root; 

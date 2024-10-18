@@ -1,0 +1,45 @@
+.shop {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .plant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items in one row */
+    gap: 20px; /* Space between grid items */
+    margin-top: 20px;
+  }
+  
+  .plant-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Prevents image overflow */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.2s; /* Add transition for hover effect */
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    height: 400px; /* Set a fixed height for the plant card */
+  }
+  
+  .plant-card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  .plant-card img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Allow height to be auto to maintain aspect ratio */
+    flex-grow: 1; /* Let image take available space in the card */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire area */
+  }
+  
+  .plant-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  .plant-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  

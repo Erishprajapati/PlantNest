@@ -1,4 +1,3 @@
-// src/Component/Home.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import plant1 from './Images/castiron.jpg';
@@ -8,10 +7,11 @@ import plant4 from './Images/Philodendron.jpg';
 import plant5 from './Images/Serene.jpg';
 import plant6 from './Images/paradise.jpg';
 import plant7 from './Images/Snake.jpg';
+import plant8 from './Images/Rhapis Excelsa.jpg';
 
-// Styles as an object
+
 const styles = {
-  home: {
+  shop: {
     textAlign: 'center',
     padding: '20px',
   },
@@ -53,7 +53,7 @@ const styles = {
   },
 };
 
-const Home = () => {
+const Shop = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   // Static plant data
@@ -65,7 +65,7 @@ const Home = () => {
     { id: 5, name: 'Serene', price: 550, image: plant5 },
     { id: 6, name: 'Paradise', price: 850, image: plant6},
     { id: 7, name: 'Snake Plant', price: 350, image: plant7},
-
+    { id: 8, name: 'Rhapis Excelsa', price: 950, image: plant8},
   ];
 
   const handlePlantClick = (plant) => {
@@ -74,15 +74,19 @@ const Home = () => {
   };
 
   return (
-    <div style={styles.home}>
-      <h2>Welcome to PlantNest</h2>
+    <div style={styles.shop}>
+      <h2>Shop Our Plants</h2>
       <div style={styles.plantGrid}>
         {plants.map((plant) => (
-          <div key={plant.id} style={styles.plantCard} onClick={() => handlePlantClick(plant)}>
+          <div
+            key={plant.id}
+            style={styles.plantCard}
+            onClick={() => handlePlantClick(plant)} // Call the function with the entire plant object
+          >
             <img src={plant.image} alt={plant.name} style={styles.plantCardImage} />
             <div style={styles.plantCardDetails}>
               <h3 style={styles.plantCardTitle}>{plant.name}</h3>
-              <p style={styles.plantCardPrice}>Rs {plant.price}</p> {/* Change here */}
+              <p style={styles.plantCardPrice}>Rs {plant.price}</p> {/* Changed to Nepali Rupees */}
             </div>
           </div>
         ))}
@@ -91,4 +95,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Shop;

@@ -14,21 +14,19 @@ const Login = () => {
 
     // Check if username and password match the stored data
     if (storedUser && storedUser.username === username && storedUser.password === password) {
-      // Navigate to home page
-      navigate('/home');
+      navigate('/home'); // Navigate to home page
     } else {
       alert('Invalid username or password');
     }
   };
 
-  // Styles as a JavaScript object
   const styles = {
     container: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       minHeight: '100vh',
-      backgroundColor: '#e0f7fa', // Light teal background
+      backgroundColor: '#e0f7fa',
     },
     form: {
       backgroundColor: 'white',
@@ -41,7 +39,7 @@ const Login = () => {
     heading: {
       textAlign: 'center',
       marginBottom: '20px',
-      color: '#00796b', // Dark teal
+      color: '#00796b',
     },
     label: {
       display: 'block',
@@ -53,34 +51,22 @@ const Login = () => {
       width: '100%',
       padding: '10px',
       marginBottom: '20px',
-      border: '1px solid #00796b', // Dark teal
+      border: '1px solid #00796b',
       borderRadius: '4px',
       fontSize: '16px',
       transition: 'border-color 0.3s ease',
     },
-    inputFocus: {
-      borderColor: '#004d40', // Darker teal on focus
-      outline: 'none', // Remove default outline
-    },
     button: {
       width: '100%',
       padding: '10px',
-      backgroundColor: '#00796b', // Dark teal
+      backgroundColor: '#00796b',
       color: 'white',
       border: 'none',
       borderRadius: '4px',
       fontSize: '16px',
       cursor: 'pointer',
       transition: 'background-color 0.3s ease',
-      marginBottom: '10px', // Add some space below the button
-    },
-    buttonHover: {
-      backgroundColor: '#004d40', // Darker teal on hover
-    },
-    paragraph: {
-      textAlign: 'center',
-      marginTop: '10px',
-      color: '#555',
+      marginBottom: '10px',
     },
   };
 
@@ -96,8 +82,6 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
             required
             style={styles.input}
-            onFocus={(e) => (e.target.style.borderColor = styles.inputFocus.borderColor)}
-            onBlur={(e) => (e.target.style.borderColor = '#00796b')}
           />
         </div>
         <div>
@@ -108,19 +92,10 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
             style={styles.input}
-            onFocus={(e) => (e.target.style.borderColor = styles.inputFocus.borderColor)}
-            onBlur={(e) => (e.target.style.borderColor = '#00796b')}
           />
         </div>
-        <button
-          type="submit"
-          style={styles.button}
-          onMouseOver={(e) => (e.target.style.backgroundColor = styles.buttonHover.backgroundColor)}
-          onMouseOut={(e) => (e.target.style.backgroundColor = styles.button.backgroundColor)}
-        >
-          Login
-        </button>
-        <p style={styles.paragraph}>
+        <button type="submit" style={styles.button}>Login</button>
+        <p style={{ textAlign: 'center', color: '#555' }}>
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
       </form>

@@ -9,6 +9,14 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     
+    // Check if user already exists
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    
+    if (storedUser && storedUser.username === username) {
+      alert('Username is already registered. Please choose a different one.');
+      return;
+    }
+    
     // Store user details in localStorage
     localStorage.setItem('user', JSON.stringify({ username, password }));
     
@@ -16,14 +24,14 @@ const Register = () => {
     navigate('/login');
   };
 
-  // Styles as a JavaScript object
+  // Styles as a JavaScript object (same as before)
   const styles = {
     container: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       minHeight: '100vh',
-      backgroundColor: '#e0f7fa', // Light teal background
+      backgroundColor: '#e0f7fa',
     },
     form: {
       backgroundColor: 'white',
@@ -36,7 +44,7 @@ const Register = () => {
     heading: {
       textAlign: 'center',
       marginBottom: '20px',
-      color: '#00796b', // Dark teal
+      color: '#00796b',
     },
     label: {
       display: 'block',
@@ -48,29 +56,29 @@ const Register = () => {
       width: '100%',
       padding: '10px',
       marginBottom: '20px',
-      border: '1px solid #00796b', // Dark teal
+      border: '1px solid #00796b',
       borderRadius: '4px',
       fontSize: '16px',
       transition: 'border-color 0.3s ease',
     },
     inputFocus: {
-      borderColor: '#004d40', // Darker teal on focus
-      outline: 'none', // Remove default outline
+      borderColor: '#004d40',
+      outline: 'none',
     },
     button: {
       width: '100%',
       padding: '10px',
-      backgroundColor: '#00796b', // Dark teal
+      backgroundColor: '#00796b',
       color: 'white',
       border: 'none',
       borderRadius: '4px',
       fontSize: '16px',
       cursor: 'pointer',
       transition: 'background-color 0.3s ease',
-      marginBottom: '10px', // Add some space below the button
+      marginBottom: '10px',
     },
     buttonHover: {
-      backgroundColor: '#004d40', // Darker teal on hover
+      backgroundColor: '#004d40',
     },
     paragraph: {
       textAlign: 'center',
